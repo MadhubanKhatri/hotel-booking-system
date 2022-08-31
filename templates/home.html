@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block body %}
+<nav class="navbar navbar-dark bg-dark text-white justify-content-center">
+    <h3>Book your Room now at <span style=" font-family: Comic Sans MS, cursive, sans-serif;">Hotel Paradise</span></h3>
+</nav>
+    {% for room in rooms %}
+        <div class="card w-25 text-center mx-5 my-3 py-3 border-primary" style="display: inline-block;">
+            <h3>{{room.room_no}}</h3><br>
+        {% if room.is_booked %}
+            <button class="btn btn-danger">Booked</button>
+        {% else %}
+            <button class="btn btn-success">
+                <a href="{% url 'room_booking' room.room_no %}" style="text-decoration: none; color: white;">Book Now</a>
+            </button>
+        {% endif %}
+        
+        </div>
+    {% endfor %}
+    
+{% endblock %}
+

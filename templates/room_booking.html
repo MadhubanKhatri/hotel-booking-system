@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %}Room Booking{% endblock %}
+
+{% block body %}
+<nav class="navbar navbar-dark bg-dark text-white justify-content-center">
+    <h3>Room Number {{room_no}}</h3>
+</nav> <br>
+
+    <form action="{% url 'booking_confirm' room_no %}" method="post">
+        {% csrf_token %}
+        <div class="mb-3 w-50 mx-5 px-5 py-5 border border-success" >
+            <label for="exampleFormControlInput1" class="form-label">Full Name</label>
+            <input type="text" class="form-control" name="fname" id="exampleFormControlInput1" placeholder="Full Name">
+        <br>
+        
+            <label for="exampleFormControlInput1" class="form-label">Age</label>
+            <input type="number" class="form-control" name="age" id="exampleFormControlInput1">
+        <br>        
+        
+            <label for="exampleFormControlInput1" class="form-label">Contact Number</label>
+            <input type="text" class="form-control" name="contact_no" id="exampleFormControlInput1">
+        
+        <br><br>
+        <select name="gender">
+            <option>Male</option>
+            <option>Female</option>
+        </select>
+        <select name="ac">
+            <option>A/C</option>
+            <option>Non A/C</option>
+        </select>
+        <select name="bad">
+            <option>Single Bad</option>
+            <option>Double Bad</option>
+        </select>
+        <hr>
+        <input type="submit" value="Book Now" class="btn btn-primary"/>
+        </div>
+    </form>
+{% endblock %}
